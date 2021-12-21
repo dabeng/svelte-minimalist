@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-	import logo from './svelte-logo.svg';
+	import logo from './logo.svg';
 </script>
 
 <header>
@@ -11,17 +11,11 @@
 	</div>
 
 	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
 		<ul>
 			<li class:active={$page.path === '/'}><a sveltekit:prefetch href="/">Home</a></li>
 			<li class:active={$page.path === '/about'}><a sveltekit:prefetch href="/about">About</a></li>
 			<li class:active={$page.path === '/todos'}><a sveltekit:prefetch href="/todos">Todos</a></li>
 		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
 	</nav>
 
 	<div class="corner">
@@ -36,8 +30,8 @@
 	}
 
 	.corner {
-		width: 3em;
-		height: 3em;
+		width: 5em;
+		height: 5em;
 	}
 
 	.corner a {
@@ -49,8 +43,8 @@
 	}
 
 	.corner img {
-		width: 2em;
-		height: 2em;
+		width: 5em;
+		height: 5em;
 		object-fit: contain;
 	}
 
@@ -58,16 +52,6 @@
 		display: flex;
 		justify-content: center;
 		--background: rgba(255, 255, 255, 0.7);
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
 	}
 
 	ul {
