@@ -1,8 +1,23 @@
 <script>
-  let vote = "故宫";
 
-  let options = [
-    "长城", "故宫", "颐和园"
+  let vote = "故宫";
+  let total = 100;
+  const options = [
+    {
+      id: 0,
+      description: '长城',
+      votes: 20
+    },
+    {
+      id: 1,
+      description: '故宫',
+      votes: 10
+    },
+    {
+      id: 2,
+      description: '颐和园',
+      votes: 5
+    }
   ];
 </script>
 
@@ -18,26 +33,19 @@
       <div class="columns is-flex-direction-column is-mobile">
         {#each options as option}
           <div class="column is-full">
-            <div class="columns bar">
-              <div class="column is-narrow">
-                <div class="active_bar" style="width: 200px;">
-
-                </div>
+            <div class="columns">
+              <div class="column progress_bar_wrapper" style="flex-basis: {option.votes/total*100}%;">
+                <div class="progress_bar" style=""></div>
               </div>
-              <div class="column is-narrow">
-                <div class="bar_summary">
-
-                </div>
-              </div>
-              <div class="column is-narrow">
-                <div class="inactive_bar">
-
+              <div class="column">
+                <div class="bar_summary" style="">
+                  <span class="votes">{option.votes}票</span><span>({option.votes/total*100}%)</span>
                 </div>
               </div>
             </div>
             <label class="radio">
-              <input type="radio" bind:group={vote} value={option} />
-              {option}
+              <input type="radio" bind:group={vote} value={option.id} />
+              {option.description}
             </label>
           </div>
         {/each}
@@ -56,14 +64,28 @@
 
 </div>
 
-<style>
+<style type="text/scss">
   .content {
     width: 100%;
     max-width: var(--column-width);
     margin: var(--column-margin-top) auto 0 auto;
+
+    .radio {
+      width: 100%;
+    }
+
+    .progress_bar_wrapper {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 0;
+      align-self: center;
+    
+      .progress_bar {
+        border-top: 1px solid black;
+      }
+    }
+
   }
-  
-  .radio {
-    width: 100%;
-  }
+
+
 </style>
