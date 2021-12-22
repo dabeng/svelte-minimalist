@@ -1,7 +1,9 @@
 <script>
   let vote = "故宫";
 
-  let options = ["长城", "故宫", "颐和园"];
+  let options = [
+    "长城", "故宫", "颐和园"
+  ];
 </script>
 
 <svelte:head>
@@ -16,6 +18,23 @@
       <div class="columns is-flex-direction-column is-mobile">
         {#each options as option}
           <div class="column is-full">
+            <div class="columns bar">
+              <div class="column is-narrow">
+                <div class="active_bar" style="width: 200px;">
+
+                </div>
+              </div>
+              <div class="column is-narrow">
+                <div class="bar_summary">
+
+                </div>
+              </div>
+              <div class="column is-narrow">
+                <div class="inactive_bar">
+
+                </div>
+              </div>
+            </div>
             <label class="radio">
               <input type="radio" bind:group={vote} value={option} />
               {option}
@@ -25,6 +44,16 @@
       </div>
     </div>
   </div>
+
+  <div class="field is-grouped is-grouped-centered">
+    <div class="control">
+      <button class="button is-primary">Submit</button>
+    </div>
+    <!-- <div class="control">
+      <button class="button is-link is-light">Cancel</button>
+    </div> -->
+  </div>
+
 </div>
 
 <style>
