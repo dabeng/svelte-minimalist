@@ -25,9 +25,23 @@
   <title>Vote</title>
 </svelte:head>
 
-<div class="content">
-  <h1>春游活动</h1>
-
+<div class="wrapper">
+  <div class="content is-medium">
+    <h1>春游活动</h1>
+    <div class="tags">
+      <span class="tag">One</span>
+      <span class="tag">Two</span>
+      <span class="tag">Three</span>
+      <span class="tag">Four</span>
+      <span class="tag">Five</span>
+      <span class="tag">Six</span>
+      <span class="tag">Seven</span>
+      <span class="tag">Eight</span>
+      <span class="tag">Nine</span>
+      <span class="tag">Ten</span>
+    </div>
+    <p>四月的下午不要错过。</p>
+  </div>
   <div class="field">
     <div class="control">
       <div class="columns is-flex-direction-column is-mobile">
@@ -65,7 +79,7 @@
 </div>
 
 <style type="text/scss">
-  .content {
+  .wrapper {
     width: 100%;
     max-width: var(--column-width);
     margin: var(--column-margin-top) auto 0 auto;
