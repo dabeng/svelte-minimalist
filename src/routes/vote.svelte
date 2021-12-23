@@ -21,7 +21,7 @@
   ];
 
   function voteHandler(optionId) {
-    options.find(ele => ele.id === optionId).votes += 1;
+    options.find(o => o.id === optionId).votes += 1;
     options = options;
 	}
 </script>
@@ -64,6 +64,7 @@
             </div>
             <label class="radio">
               <input type="radio" bind:group={vote} value={option.id} on:click={() => {voteHandler(option.id)}}/>
+              <!-- <input type="radio" bind:group={vote} value={option.id} on:change={() => {voteHandler(option.id)}}/> -->
               {option.description}
             </label>
           </div>
