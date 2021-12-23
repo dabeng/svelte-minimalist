@@ -19,6 +19,11 @@
       votes: 5
     }
   ];
+
+  function voteHandler(optionId) {
+    options.find(ele => ele.id === optionId).votes += 1;
+    options = options;
+	}
 </script>
 
 <svelte:head>
@@ -58,7 +63,7 @@
               </div>
             </div>
             <label class="radio">
-              <input type="radio" bind:group={vote} value={option.id} />
+              <input type="radio" bind:group={vote} value={option.id} on:click={() => {voteHandler(option.id)}}/>
               {option.description}
             </label>
           </div>
