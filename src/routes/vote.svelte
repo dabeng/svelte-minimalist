@@ -46,13 +46,13 @@
     <div class="control">
       <div class="columns is-flex-direction-column is-mobile">
         {#each options as option}
-          <div class="column is-full">
+          <div class="column">
             <div class="columns">
-              <div class="column progress_bar_wrapper" style="flex-basis: {option.votes/total*100}%;">
+              <div class="column progress_bar_wrapper" style="flex-basis: calc((100% - 120px)*{option.votes/total});">
                 <div class="progress_bar" style=""></div>
               </div>
-              <div class="column">
-                <div class="bar_summary" style="">
+              <div class="column bar_summary_wrapper">
+                <div class="bar_summary">
                   <span class="votes">{option.votes}票</span><span>({option.votes/total*100}%)</span>
                 </div>
               </div>
@@ -97,6 +97,10 @@
       .progress_bar {
         border-top: 1px solid black;
       }
+    }
+
+    .bar_summary_wrapper {
+      padding-left: 0;
     }
 
   }
