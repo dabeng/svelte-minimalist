@@ -58,7 +58,7 @@
               </div>
               <div class="column bar_summary_wrapper">
                 <div class="bar_summary">
-                  <span class="votes">{option.votes}票</span><span>({option.votes/total*100}%)</span>
+                  <span class="votes">{option.votes}票</span><span>({Math.round(option.votes/total*100)}%)</span>
                 </div>
               </div>
             </div>
