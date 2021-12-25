@@ -1,7 +1,7 @@
 <script>
 
   let vote = "故宫";
-  let total = 100;
+
   const options = [
     {
       id: 0,
@@ -19,6 +19,15 @@
       votes: 5
     }
   ];
+  // $: total = options.reduce((sum, current) => {
+  //   return sum + current.votes;
+  // }, 0);
+  function someFunction(items) {
+    return items.reduce((sum, current) => {
+      return sum + current.votes;
+    }, 0);
+  }
+  $: total = someFunction(options);
 
   function voteHandler(optionId) {
     options.find(o => o.id === optionId).votes += 1;
