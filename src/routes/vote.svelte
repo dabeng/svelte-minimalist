@@ -1,21 +1,21 @@
 <script>
 
-  let vote = "故宫";
+  let vote = "";
 
   let options = [
     {
-      id: 0,
-      description: '长城',
+      value: '长城',
+      description: '长城 -- ',
       votes: 20
     },
     {
-      id: 1,
-      description: '故宫',
+      value: '故宫',
+      description: '故宫 -- ',
       votes: 10
     },
     {
-      id: 2,
-      description: '颐和园',
+      value: '颐和园',
+      description: '颐和园 -- ',
       votes: 5
     }
   ];
@@ -24,9 +24,9 @@
     return sum + current.votes;
   }, 0);
 
-  const voteHandler = (optionId) => {
-    options.find(o => o.id === optionId).votes += 1;
-    options = options;
+  const voteHandler = (index) => {
+    options[index].votes += 1;
+    options = options.sort((a, b) => b.votes - a.votes);
 	}
 </script>
 
@@ -54,22 +54,22 @@
   <div class="field">
     <div class="control">
       <div class="columns is-flex-direction-column is-mobile">
-        {#each options as option}
-          <div class="column">
+        {#each options as { value, description, votes}, i (value)}
+          <div class="column" style="padding-bottom: 2rem;">
             <div class="columns">
-              <div class="column progress_bar_wrapper" style="flex-basis: calc((100% - 120px)*{option.votes/total});">
+              <div class="column progress_bar_wrapper" style="flex-basis: calc((100% - 120px)*{votes/total});">
                 <div class="progress_bar" style=""></div>
               </div>
               <div class="column bar_summary_wrapper">
                 <div class="bar_summary">
-                  <span class="votes">{option.votes}票</span><span>({Math.round(option.votes/total*100)}%)</span>
+                  <span class="votes">{votes}票</span><span>({Math.round(votes/total*100)}%)</span>
                 </div>
               </div>
             </div>
             <label class="radio">
-              <input type="radio" bind:group={vote} value={option.id} on:click={() => {voteHandler(option.id)}}/>
+              <input type="radio" bind:group={vote} value={value} on:click={() => {voteHandler(i)}}/>
               <!-- <input type="radio" bind:group={vote} value={option.id} on:change={() => {voteHandler(option.id)}}/> -->
-              {option.description}
+              {description}
             </label>
           </div>
         {/each}
@@ -110,7 +110,7 @@
     }
 
     .bar_summary_wrapper {
-      padding-left: 0;
+      padding: 0;
     }
 
   }
