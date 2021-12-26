@@ -2,7 +2,7 @@
 
   let vote = "故宫";
 
-  const options = [
+  let options = [
     {
       id: 0,
       description: '长城',
@@ -19,17 +19,12 @@
       votes: 5
     }
   ];
-  // $: total = options.reduce((sum, current) => {
-  //   return sum + current.votes;
-  // }, 0);
-  function someFunction(items) {
-    return items.reduce((sum, current) => {
-      return sum + current.votes;
-    }, 0);
-  }
-  $: total = someFunction(options);
 
-  function voteHandler(optionId) {
+  $: total = options.reduce((sum, current) => {
+    return sum + current.votes;
+  }, 0);
+
+  const voteHandler = (optionId) => {
     options.find(o => o.id === optionId).votes += 1;
     options = options;
 	}
