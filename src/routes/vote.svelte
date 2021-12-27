@@ -5,17 +5,17 @@
   let options = [
     {
       value: '长城',
-      description: '长城 -- ',
+      description: '长城 -- 八达岭长城 + 闯关游戏',
       votes: 20
     },
     {
       value: '故宫',
-      description: '故宫 -- ',
+      description: '故宫 -- 角楼咖啡☕️ + 桌游',
       votes: 10
     },
     {
       value: '颐和园',
-      description: '颐和园 -- ',
+      description: '颐和园 -- 万寿山佛香阁 + 龙船 + 听鹂馆宫廷菜',
       votes: 5
     }
   ];
