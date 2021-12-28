@@ -1,0 +1,53 @@
+<script>
+
+  import Vote from './Vote.svelte';
+</script>
+
+<svelte:head>
+  <title>Vote</title>
+</svelte:head>
+
+<div class="wrapper">
+  <div class="box">
+    <div class="content is-medium">
+      <h1>春游活动</h1>
+      <div class="tags">
+        <span class="tag is-primary">投票中...</span>
+        <span class="tag is-link">截止时间XXX</span>
+        <span class="tag is-info">可带一名家属</span>
+        <span class="tag is-success">Four</span>
+        <span class="tag is-warning">Five</span>
+        <span class="tag is-danger">Six</span>
+        <span class="tag">Seven</span>
+        <span class="tag">Eight</span>
+        <span class="tag">Nine</span>
+        <span class="tag">Ten</span>
+      </div>
+      <p>一年一度的春游，四月的下午不要错过。</p>
+    </div>
+  </div>
+
+  <div class="box">
+    <Vote />
+  </div>
+
+  <div class="field is-grouped is-grouped-centered">
+    <div class="control">
+      <button class="button is-primary">Submit</button>
+    </div>
+    <!-- <div class="control">
+      <button class="button is-link is-light">Cancel</button>
+    </div> -->
+  </div>
+
+</div>
+
+<style type="text/scss">
+  .wrapper {
+    width: 100%;
+    max-width: var(--column-width);
+    margin: var(--column-margin-top) auto 0 auto;
+  }
+
+
+</style>
