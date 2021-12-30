@@ -18,20 +18,27 @@
   <div class="columns is-flex-direction-column is-mobile">
     {#each options as { value, description, votes}, i (value)}
       <div class="column" style="padding-bottom: 2rem;">
+        <slot name="progress" stat={{votes, total}}>
         <div class="columns">
           <div class="column progress_bar_wrapper" style="flex-basis: calc((100% - 120px)*{votes/total});">
             <div class="progress_bar" style=""></div>
           </div>
           <div class="column bar_summary_wrapper">
             <div class="bar_summary">
-              <span class="votes">{votes}票</span><span>({Math.round(votes/total*100)}%)</span>
+              
+                <span class="votes">{votes}票</span><span>({Math.round(votes/total*100)}%)</span>
+              
             </div>
           </div>
         </div>
+      </slot>
         <label class="radio">
           <input type="radio" bind:group={vote} value={value} on:click={() => {voteHandler(i)}}/>
           <!-- <input type="radio" bind:group={vote} value={option.id} on:change={() => {voteHandler(option.id)}}/> -->
-          {description}
+          
+          <slot name="description" desc={description}>
+            {description}
+          </slot>
         </label>
       </div>
     {/each}

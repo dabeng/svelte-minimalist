@@ -45,9 +45,25 @@
     </div>
   </div>
 
-  <div class="box">
-    <Vote {options}/>
-  </div>
+  <h1 class="title is-2">Default Component</h1>
+  <Vote {options} />
+
+  <h1 class="title is-2">Component with Slots</h1>
+  <Vote {options}>
+    <div class="columns is-align-items-center" slot="progress" let:stat>
+      <div class="column is-narrow">
+        <span class="tag is-dark" style="width: 80px;">
+          {Math.round(stat.votes/stat.total*10000)/100}%
+        </span>
+      </div>
+      <div class="column">
+        <progress class="progress is-small" value={stat.votes/stat.total*100} max="100">{Math.round(stat.votes/stat.total*10000)/100}%</progress>
+      </div>
+    </div>
+    <div class="box" style="display:inline-block" slot="description" let:desc>
+      {desc}
+    </div>
+  </Vote>
 
   <div class="field is-grouped is-grouped-centered">
     <div class="control">
