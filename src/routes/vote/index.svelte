@@ -2,7 +2,7 @@
 
   import Vote from './Vote.svelte';
 
-  let options = [
+  let datasource = [
     {
       value: '长城',
       description: '长城 -- 八达岭长城 + 闯关游戏',
@@ -19,6 +19,8 @@
       votes: 5
     }
   ];
+
+  let customClass = "my_vote";
 </script>
 
 <svelte:head>
@@ -46,11 +48,11 @@
   </div>
 
   <h1 class="title is-2">Default Component</h1>
-  <Vote {options} />
+  <Vote {datasource} />
 
   <h1 class="title is-2">Component with Slots</h1>
-  <Vote {options}>
-    <div class="columns is-align-items-center" slot="progress" let:stat>
+  <Vote class="my_vote" {datasource}>
+    <div slot="progress" let:stat class="columns is-align-items-center" >
       <div class="column is-narrow">
         <span class="tag is-dark" style="width: 80px;">
           {Math.round(stat.votes/stat.total*10000)/100}%
@@ -60,7 +62,7 @@
         <progress class="progress is-small" value={stat.votes/stat.total*100} max="100">{Math.round(stat.votes/stat.total*10000)/100}%</progress>
       </div>
     </div>
-    <div class="box" style="display:inline-block" slot="description" let:desc>
+    <div slot="description" let:desc class="box" style="display:inline-block;width:calc(100% - 50px);margin-left:10px;" >
       {desc}
     </div>
   </Vote>
@@ -83,5 +85,9 @@
     margin: var(--column-margin-top) auto 0 auto;
   }
 
-
+	:global(.my_vote [type=radio]) {
+		width: 30px;
+    height: 30px;
+    vertical-align: middle;
+	}
 </style>

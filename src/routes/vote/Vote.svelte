@@ -2,21 +2,22 @@
 
   let vote = "";
 
-  export let options;
+  export let datasource;
 
-  $: total = options.reduce((sum, current) => {
+  $: total = datasource.reduce((sum, current) => {
     return sum + current.votes;
   }, 0);
 
   const voteHandler = (index) => {
-    options[index].votes += 1;
-    options = options.sort((a, b) => b.votes - a.votes);
+    datasource[index].votes += 1;
+    datasource = datasource.sort((a, b) => b.votes - a.votes);
 	}
 </script>
 
-<div class="control">
+<div class={`control${$$props.class ? ' ' + $$props.class : ''}`}>
+  <!-- <div class={`control${' ' + clazz || ''}`}></div> -->
   <div class="columns is-flex-direction-column is-mobile">
-    {#each options as { value, description, votes}, i (value)}
+    {#each datasource as { value, description, votes}, i (value)}
       <div class="column" style="padding-bottom: 2rem;">
         <slot name="progress" stat={{votes, total}}>
         <div class="columns">
@@ -24,11 +25,7 @@
             <div class="progress_bar" style=""></div>
           </div>
           <div class="column bar_summary_wrapper">
-            <div class="bar_summary">
-              
-                <span class="votes">{votes}票</span><span>({Math.round(votes/total*100)}%)</span>
-              
-            </div>
+            <span class="votes">{votes}票</span><span>({Math.round(votes/total*100)}%)</span>
           </div>
         </div>
       </slot>
